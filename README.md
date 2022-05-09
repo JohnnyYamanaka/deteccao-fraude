@@ -1,5 +1,5 @@
 # Detecção-fraude
-Por [Johnny Yamanaka]()  
+Por Johnny Yamanaka
 :raising_hand: [LindedIn](https://www.linkedin.com/in/johnny-yamanaka/) | :mailbox_with_no_mail: E-mail: yamanaka.johnny@outlook.com;  
 
 ## Introdução
