@@ -11,8 +11,8 @@ Os dados que serão utilizados para o desenvolvimento do modelo foi gerada sinte
 O dataset completo possui mais de 6 milhões de transações, por conta da restrição de tamanho de arquivo do github foi escohida uma amostragem com 1,5 milhões de registros.
 
 ## Etapas do Projeto
-* [Aquisição dos dados](notebooks/eda.ipynb);
-* Análise exploratória;
+* [Aquisição dos dados](get_data.py);
+* [Análise exploratória](notebooks/eda.ipynb);
 * Criação do primeiro modelo e baseline;
 * Feature engineering;
 * Tunagem e entrega do modelo.
