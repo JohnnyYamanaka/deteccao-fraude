@@ -14,7 +14,7 @@ O dataset completo possui mais de 6 milhões de transações, por conta da restr
 * [Aquisição dos dados](get_data.py);
 * [Análise exploratória](notebooks/eda.ipynb);
 * [Criação do primeiro modelo e baseline](baseline.py);
-* Feature engineering;
+* [Feature engineering](features_investigation.py);
 * Tunagem e entrega do modelo.
 
 
@@ -36,3 +36,22 @@ Para fim de comparação, foram utilizados cinco modelos para verificar criar um
 
 Mesmo o melhor modelo ainda representa um valor muito alto de prejuízo ($ 20M).  
 A seguir vamos realizar feature engineering no dataset e a tunagem de modelo para verificar se é possível melhorar o desempenho do modelo.
+
+## Feature Engineering
+Features criadas para tentar melhorar o modelo:
+* Agrupar a hora da transação em grupos de três horas;
+* Flag para identificar quando o valor das colunas passarem do terceiro quartil:
+  * `amount`;
+  * `oldbalanceOrg`.
+* Flag para identificar se o montante da operação é igual a o saldo inicial da conta origem;
+* Variável com o amount ao quadrado;
+* Variável com a diferença entre a média do montante e o montante.
+
+Após essa etapa, realizado [treinamento](fe_train.py) com três modelos os resultados foram:
+| **#** | **modelo**          | **AUC** | **Total of Loss ($)** |
+|------:|---------------------|---------|-----------------------|
+|     1 | XGBoost             | 0,917   | 19,488,045,29         |
+|     2 | Random Forest       | 0,881   | 23.424.315,31         |
+|     3 | Logistic Regression | 0,737   | 66.403.649,59         |
+
+Em seguida vamos verificar o desempenho após realzar as tunagens dos modelos, para relecionar.
