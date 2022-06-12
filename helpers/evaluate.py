@@ -1,4 +1,3 @@
-from random import random
 import pandas as pd
 from sklearn.metrics import classification_report, roc_auc_score
 from sklearn.model_selection import train_test_split
@@ -34,3 +33,5 @@ class EvaluateModel():
             else 0, axis=1)
 
         print(f'Total of loss: ${df_evaluate["financialLost"].sum(): ,.2f}')
+
+        return fited_model
