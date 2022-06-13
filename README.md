@@ -10,6 +10,7 @@ Por Johnny Yamanaka
 * [Baseline](#baseline)
 * [Feature Engineering](#feature-engineering)
 * [Tunagem e Entrega do Modelo](#tunagem-e-entrega-do-modelo)
+* [Prototipação](#prototipação)
 
 ## Introdução
 Este projeto tem como objetivo desenvolver um modelo para detectar fraudes em transações financeiras, de forma a causar o menor prejuízo possível.  
@@ -21,14 +22,12 @@ Este projeto tem como objetivo desenvolver um modelo para detectar fraudes em tr
 * [Criação do primeiro modelo e baseline](baseline.py);
 * [Feature engineering](features_investigation.py);
 * [Tunagem e entrega do modelo](train.py).
+* [Prototipação](fraud_detection.py)
 
 
 ## Os Dados
 Os dados que serão utilizados para o desenvolvimento do modelo foram geradas sinteticamente, através da PaySim mobile money simulator. O [dataset original](https://www.kaggle.com/datasets/ealaxi/paysim1) pode ser encontrado no Kaggle.  
 O dataset completo possui mais de 6 milhões de transações, por conta da restrição de tamanho de arquivo do github foi escohida uma amostragem com 1,5 milhões de registros.
-
-
-
 
 ## Métricas de Avaliação
 Para avaliar o desempenho dos modelos, serão aplicadas duas métricas principais:
@@ -80,3 +79,6 @@ O resultado do treinamento após a tunagem foi bem melhor que a etapa anterior:
 Agora todos os modelos alcançou quase a nota máxima e diminuiu considerávelmente o potencial prejuízo financeiro. Como todos os modelos alcançaram o mesmo resultado, pode se concluir que dado o conjunto esse foi o máximo que pode ser alcançado.  
  **Então qual modelo escolher?**  
  Já que o resultado foram iguais, em tese poderíamos escolher qualquer modelo. Mas para manter a simplicidade, foi escolhido o modelo que roda o Random Forest.
+
+ ## Prototipação
+ Para acessar o modelo rodando e avaliando os outros dias da simulação, basta acessar  esse [link](https://share.streamlit.io/johnnyyamanaka/deteccao-fraude/main/fraud_detection.py)

@@ -2,17 +2,38 @@ import joblib
 import streamlit as st
 import pandas as pd
 
+import os
+import json
+from kaggle.api.kaggle_api_extended import KaggleApi
+
 from helpers.data_preparation import DataTransformation
 from helpers.feature_engineering import FeatureEngineering
 from helpers.evaluate import EvaluateModel
 
 st.title('Detecção de Fraudes')
-st.write('Bem vindo ao protótipo do detector de fraudes.')
+st.subheader('Bem vindo ao protótipo do detector de fraudes.')
 st.write('Para começar, escolha a data das transações desejada.')
+st.write('A primeira execução pode vai demorar mais que os outros para \
+    carregar o dataset.')
 
-@st.cache(allow_output_mutation=True)
+@st.experimental_memo
 def load_dataset():
-    df = pd.read_parquet('../deteccao-fraude/data/raw-data.parquet')
+    file = open('../deteccao-fraude/kaggle.json')
+    json_file = json.load(file)
+
+    os.environ['KAGGLE_USERNAME'] = json_file['username']
+    os.environ['KAGGLE_KEY'] = json_file['key']
+    
+    dataset = 'ealaxi/paysim1'
+    path = '../deteccao-fraude/data'
+    api = KaggleApi()
+    api.authenticate()
+
+    api.dataset_download_files(dataset, path, force = True, 
+    quiet = False, unzip = True)
+
+    df = pd.read_csv('../deteccao-fraude/data/PS_20174392719_1491204439457_log.csv')
+    os.remove('../deteccao-fraude\data\PS_20174392719_1491204439457_log.csv')
 
     return df
 
