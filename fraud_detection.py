@@ -1,4 +1,3 @@
-from joblib import load
 import joblib
 import streamlit as st
 import pandas as pd
