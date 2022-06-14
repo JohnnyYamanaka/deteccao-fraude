@@ -39,6 +39,8 @@ def select_sample():
 
     sampled_df = df_raw.iloc[: qtd, :]
     sampled_df.to_parquet('../deteccao-fraude/data/financial-data.parquet')
+
+    df_raw = df_raw.iloc[qtd : , :]
     df_raw.to_parquet('../deteccao-fraude/data/raw-data.parquet')
 
     print('Amostras selecionadas e salvas')
